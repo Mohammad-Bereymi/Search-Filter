@@ -1,5 +1,7 @@
 const productsDOM = document.querySelector(".products-center");
 const searchInput = document.querySelector("#search");
+const storeProducts = document.querySelectorAll(".product");
+const btns = document.querySelectorAll(".btn");
 
 let allProductsData = [];
 
@@ -40,4 +42,15 @@ searchInput.addEventListener("input", (e) => {
   console.log(e.target.value);
   filters.searchItems = e.target.value;
   renderProducts(allProductsData, filters);
+});
+
+// filter based on groups :
+btns.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    const filter = e.target.dataset.filter;
+    // e.target.classList.add("active");
+    // console.log(e.target.innerText);
+    filters.searchItems = filter;
+    renderProducts(allProductsData, filters);
+  });
 });
